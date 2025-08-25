@@ -10,7 +10,7 @@ class Faculty extends Model
     use HasFactory;
      public function teachers()
     {
-        return $this->belongsToMany(Teacher::class, 'faculty_teacher');
+        return $this->belongsToMany(Teacher::class, 'faculty_teachers');
     }
 
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FacultyTeacherController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,5 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::resource('facultyTeacher', FacultyTeacherController::class);
 
-Route::resource('facultyteacher',FacultyTeacherController::class);
