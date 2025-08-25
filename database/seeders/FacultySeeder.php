@@ -21,5 +21,6 @@ class FacultySeeder extends Seeder
             ['name' => 'Law'],
         ];
         DB::table('faculties')->insert($faculties);
+        
     }
 }
