@@ -13,12 +13,15 @@ return new class extends Migration
     {
         Schema::create('faculty_teachers', function (Blueprint $table) {
             $table->id();
-            
+
 
             $table->foreignId("teacher_id")->constrained()->onDelete("cascade");
 
             $table->foreignId("faculty_id")->constrained()->onDelete("cascade");
             $table->timestamps();
+
+            // Prevent duplicate faculty-teacher pairs
+            $table->unique(['faculty_id', 'teacher_id']);
         });
     }
 

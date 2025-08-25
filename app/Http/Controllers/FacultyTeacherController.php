@@ -11,6 +11,7 @@ class FacultyTeacherController extends Controller
     public function index()
     {
         $faculties = Faculty::with('teachers')->get();
+
         return view('facultyTeacher.index', compact('faculties'));
     }
 
@@ -28,7 +29,16 @@ class FacultyTeacherController extends Controller
 
         $faculty->teachers()->attach($teacher->id);
 
-        return redirect()->route('facultyTeacher.index')
-            ->with('success', 'Teacher assigned to faculty successfully');
+        return redirect()->route('facultyTeacher.index') ->with('success', 'Teacher assigned to faculty successfully');
+    }
+
+    public function destroy($facultyId, $teacherId)
+    {
+        $faculty = Faculty::findOrFail($facultyId);
+        $teacher = Teacher::findOrFail($teacherId);
+
+        $faculty->teachers()->detach($teacher->id);
+
+        return redirect()->route('facultyTeacher.index')->with('success', 'Teacher removed from faculty successfully');
     }
 }
